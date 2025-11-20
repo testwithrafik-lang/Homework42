@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Головна{% endblock %}
+{% block content %}
+<h1 class="mb-4">Список нотаток</h1>
+<table class="table table-striped">
+    <thead><tr><th>Назва</th><th>Категорія</th><th>Дії</th></tr></thead>
+    <tbody>
+    {% for note in notes %}
+        <tr>
+            <td>{{ note.title }}</td>
+            <td>{{ note.category }}</td>
+            <td>
+                <a class="btn btn-sm btn-info" href="{% url 'note_detail' note.pk %}">Редагувати</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'delete_note' note.pk %}">Видалити</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
